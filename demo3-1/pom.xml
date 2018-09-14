@@ -66,9 +66,9 @@
 			   <!-- Check latest version on Maven Central -->
 			   <version>1.1.0</version>
 			   <configuration>
-			      <resourceGroup>maven-projects</resourceGroup>
+			      <resourceGroup>App_Positiva</resourceGroup>
 			      <appName>${project.artifactId}-${maven.build.timestamp}</appName>
-			      <region>westus</region>
+			      <region>centralus</region>
 			      <javaVersion>1.8</javaVersion>
 			      <deploymentType>war</deploymentType>
 			   </configuration>

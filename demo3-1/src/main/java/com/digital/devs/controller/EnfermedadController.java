@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.digital.devs.model.Enfermedad;
 import com.digital.devs.model.Recordatorio;
-import com.digital.devs.service.IRecordatorioService;
+import com.digital.devs.service.IEnfermedadService;
 
 
 
@@ -25,34 +26,34 @@ import com.digital.devs.service.IRecordatorioService;
 public class EnfermedadController {
 
 	@Autowired
-	private IRecordatorioService service;
+	private IEnfermedadService service;
 	
 	@GetMapping
-	public List<Recordatorio> listar(){
+	public List<Enfermedad> listar(){
 		return service.listar();
 	}
 	
 	@GetMapping(value = "/{id}")
-	public Recordatorio listarPorId(@PathVariable("id") String id){
-		Optional<Recordatorio> op = service.listarPorId(id);
-		return op.isPresent() ? op.get() : new Recordatorio();
+	public Enfermedad listarPorId(@PathVariable("id") String id){
+		Optional<Enfermedad> op = service.listarPorId(id);
+		return op.isPresent() ? op.get() : new Enfermedad();
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Recordatorio registrar(@RequestBody Recordatorio persona) {
+	public Enfermedad registrar(@RequestBody Enfermedad persona) {
 		return service.registrar(persona);
 	}
 
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Recordatorio modificar(@RequestBody Recordatorio persona) {
+	public Enfermedad modificar(@RequestBody Enfermedad persona) {
 		return service.modificar(persona);
 	}
 
 	@DeleteMapping(value = "/{id}")
 	public Integer eliminar(@PathVariable("id") String id) {
-		Optional<Recordatorio> opt = service.listarPorId(id);
+		Optional<Enfermedad> opt = service.listarPorId(id);
 		if (opt.isPresent()) {
-			Recordatorio per = new Recordatorio();
+			Enfermedad per = new Enfermedad();
 			per.setId(id);
 			service.eliminar(per);
 			return 1;
